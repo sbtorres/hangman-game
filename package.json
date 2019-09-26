@@ -1,0 +1,20 @@
+{
+  "name": "hangman-game",
+  "version": "1.0.0",
+  "description": "An interactive hangman game built with React",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sbtorres/hangman-game.git"
+  },
+  "keywords": [],
+  "author": "Scott Torres <scott.torres27@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sbtorres/hangman-game/issues"
+  },
+  "homepage": "https://github.com/sbtorres/hangman-game#readme"
+}
