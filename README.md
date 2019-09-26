@@ -9,7 +9,9 @@ These instructions will get you a copy of the project up and running on your loc
 1. Fork the repository.
 2. Clone the repository down to your local machine using the `git clone` command.
 3. Install project dependencies using the `npm install` command.
-4. Navigate to [http://localhost:3000](http://localhost:3000) to play the game!
+4. Build the project using the command `npm run build:prod`.
+5. Start the server using the command `npm run server`.
+6. Navigate to [http://localhost:3000](http://localhost:3000) to play the game!
 
 ## Game Rules
 
@@ -34,5 +36,4 @@ To run the tests for this project, navigate to the projects root directory and r
 ## Author
 
 - **Scott Torres**
-  [Github Profile](https://github.com/sbtorres)
-  [LinkedIn Profile](https://www.linkedin.com/in/scott-torres27/)
+  [Github Profile](https://github.com/sbtorres) [LinkedIn Profile](https://www.linkedin.com/in/scott-torres27/)
