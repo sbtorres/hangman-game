@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import SecretWord from './SecretWord';
 
 class App extends Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class App extends Component {
 
   render() {
     const { secretWordLength } = this.state;
-    return <div>{secretWordLength}</div>;
+    return <SecretWord secretWordLength={secretWordLength} />;
   }
 }
 
