@@ -6,12 +6,13 @@ const app = express();
 
 app.use(express.static('client/public'));
 
-app.get('/getNewWord', (req, res) => {
+app.get('/getSecretWordLength', (req, res) => {
   const randomInt = Math.floor(Math.random() * 162414);
   axios
     .get(`http://app.linkedin-reach.io/words?start=${randomInt}&count=1`)
     .then(({ data }) => {
-      res.status(200).send(data);
+      const secretWordLength = JSON.stringify(data.length);
+      res.status(200).send(secretWordLength);
     })
     .catch(err => {
       console.log(err);

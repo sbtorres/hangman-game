@@ -5,15 +5,15 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { secretWord: '' };
+    this.state = { secretWordLength: 0 };
   }
 
   componentDidMount() {
     axios
-      .get('http://localhost:3000/getNewWord')
+      .get('http://localhost:3000/getSecretWordLength')
       .then(({ data }) => {
         this.setState({
-          secretWord: data
+          secretWordLength: parseInt(data, 10)
         });
       })
       .catch(err => {
@@ -22,8 +22,8 @@ class App extends Component {
   }
 
   render() {
-    const { secretWord } = this.state;
-    return <div>{secretWord}</div>;
+    const { secretWordLength } = this.state;
+    return <div>{secretWordLength}</div>;
   }
 }
 
