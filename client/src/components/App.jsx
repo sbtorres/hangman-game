@@ -8,9 +8,7 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div>Test React</div>
-    )
+    return <div>Test React</div>;
   }
 }
 
