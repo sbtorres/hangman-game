@@ -1,1 +1,5 @@
+# Node modules 
 node_modules
+
+#Webpack bundle file
+client/public/bundle.js

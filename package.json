@@ -4,6 +4,10 @@
   "description": "An interactive hangman game built with React",
   "main": "index.js",
   "scripts": {
+    "server-dev": "nodemon server/server.js",
+    "start": "node server/server.js",
+    "build:dev": "webpack -d --watch",
+    "build:prod": "webpack -p",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -28,6 +32,7 @@
     "@babel/core": "^7.6.2",
     "@babel/preset-env": "^7.6.2",
     "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "eslint": "^6.1.0",
     "eslint-config-airbnb": "^18.0.1",
