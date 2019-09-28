@@ -3,3 +3,6 @@ node_modules
 
 #Webpack bundle file
 client/public/bundle.js
+
+#Mac stuff
+.DS_Store
