@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { TextField, Button } from '@material-ui/core';
+import { Grid, TextField, Button } from '@material-ui/core';
 
-const LetterInputForm = props => {
+const LetterInputForm = () => {
   const [letterInput, setLetterInput] = useState('');
 
   const handleChange = e => {
@@ -9,15 +9,20 @@ const LetterInputForm = props => {
   };
 
   return (
-    <form>
-      <TextField
-        id="letter-input"
-        label="Guess A Letter:"
-        value={letterInput.name}
-        onChange={handleChange}
-        onBlur={handleChange}
-      />
-    </form>
+    <Grid container direction="row" justify="center" alignItems="center">
+      <form>
+        <TextField
+          id="letter-input"
+          label="Guess A Letter:"
+          value={letterInput.name}
+          onChange={handleChange}
+          onBlur={handleChange}
+        />
+        <Button variant="contained" size="medium">
+          Make A Guess!
+        </Button>
+      </form>
+    </Grid>
   );
 };
 
