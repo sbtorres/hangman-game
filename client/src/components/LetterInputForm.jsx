@@ -22,6 +22,7 @@ const LetterInputForm = () => {
           value={letterInput.name}
           onChange={handleChange}
           onBlur={handleChange}
+          inputProps={{ maxLength: 1 }}
         />
         <Button variant="contained" size="medium" type="submit">
           Make A Guess!
