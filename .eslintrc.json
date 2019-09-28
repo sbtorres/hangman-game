@@ -2,6 +2,7 @@
   "extends": ["airbnb", "prettier"],
   "plugins": ["prettier"],
   "rules": {
+    "react/no-array-index-key": "off",
     "prettier/prettier": ["error"]
   },
   "env": {

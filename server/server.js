@@ -1,21 +1,24 @@
 const express = require('express');
+const morgan = require('morgan');
 const axios = require('axios');
 
 const PORT = 3000;
 const app = express();
 
 app.use(express.static('client/public'));
+app.use(morgan('tiny'));
 
-app.get('/getSecretWordLength', (req, res) => {
+app.get('/getInitialString', (req, res) => {
   const randomInt = Math.floor(Math.random() * 162414);
   axios
     .get(`http://app.linkedin-reach.io/words?start=${randomInt}&count=1`)
     .then(({ data }) => {
-      const secretWordLength = JSON.stringify(data.length);
-      res.status(200).send(secretWordLength);
+      const charactersArray = new Array(data.length);
+      charactersArray.fill('_');
+      res.status(200).send({ charactersArray, data });
     })
     .catch(err => {
-      console.log(err);
+      res.status(500).send({ Error: err });
     });
 });
 
