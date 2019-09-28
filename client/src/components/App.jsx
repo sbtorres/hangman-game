@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Grid } from '@material-ui/core';
 import axios from 'axios';
 import SecretWord from './SecretWord';
+import LetterInputForm from './LetterInputForm';
 
 class App extends Component {
   constructor(props) {
@@ -32,6 +33,9 @@ class App extends Component {
         <Grid container direction="column" justify="center" alignItems="center">
           <SecretWord visibleLetters={visibleLetters} />
         </Grid>
+        <div>
+          <LetterInputForm />
+        </div>
       </div>
     );
   }
