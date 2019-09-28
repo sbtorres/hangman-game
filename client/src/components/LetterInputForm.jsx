@@ -5,12 +5,12 @@ const LetterInputForm = () => {
   const [letterInput, setLetterInput] = useState('');
 
   const handleChange = e => {
-    setLetterInput(e.target.value);
+    setLetterInput(e.target.value.toLowerCase());
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(letterInput.toUpperCase());
+    console.log(letterInput);
   };
 
   return (
