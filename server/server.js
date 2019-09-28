@@ -1,10 +1,12 @@
 const express = require('express');
+const morgan = require('morgan');
 const axios = require('axios');
 
 const PORT = 3000;
 const app = express();
 
 app.use(express.static('client/public'));
+app.use(morgan('tiny'));
 
 app.get('/getInitialString', (req, res) => {
   const randomInt = Math.floor(Math.random() * 162414);
