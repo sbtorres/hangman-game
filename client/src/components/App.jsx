@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Grid } from '@material-ui/core';
 import axios from 'axios';
 import SecretWord from './SecretWord';
 
@@ -6,15 +7,16 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { secretWordLength: 0 };
+    this.state = { visibleLetters: [], temp: '' };
   }
 
   componentDidMount() {
     axios
-      .get('http://localhost:3000/getSecretWordLength')
+      .get('http://localhost:3000/getInitialString')
       .then(({ data }) => {
         this.setState({
-          secretWordLength: parseInt(data, 10)
+          visibleLetters: data.charactersArray,
+          temp: data.data
         });
       })
       .catch(err => {
@@ -23,8 +25,15 @@ class App extends Component {
   }
 
   render() {
-    const { secretWordLength } = this.state;
-    return <SecretWord secretWordLength={secretWordLength} />;
+    const { visibleLetters, temp } = this.state;
+    return (
+      <div>
+        <div>{temp}</div>
+        <Grid container direction="column" justify="center" alignItems="center">
+          <SecretWord visibleLetters={visibleLetters} />
+        </Grid>
+      </div>
+    );
   }
 }
 
