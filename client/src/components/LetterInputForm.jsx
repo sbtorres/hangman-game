@@ -8,9 +8,14 @@ const LetterInputForm = () => {
     setLetterInput(e.target.value);
   };
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log(letterInput.toUpperCase());
+  };
+
   return (
     <Grid container direction="row" justify="center" alignItems="center">
-      <form>
+      <form onSubmit={handleSubmit}>
         <TextField
           id="letter-input"
           label="Guess A Letter:"
@@ -18,7 +23,7 @@ const LetterInputForm = () => {
           onChange={handleChange}
           onBlur={handleChange}
         />
-        <Button variant="contained" size="medium">
+        <Button variant="contained" size="medium" type="submit">
           Make A Guess!
         </Button>
       </form>
