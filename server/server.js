@@ -16,7 +16,7 @@ app.get('/getInitialString', (req, res) => {
       res.status(200).send({ charactersArray, data });
     })
     .catch(err => {
-      console.log(err);
+      res.status(500).send({ Error: err });
     });
 });
 
