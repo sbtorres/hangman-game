@@ -3,6 +3,7 @@ import { Grid } from '@material-ui/core';
 import axios from 'axios';
 import SecretWord from './SecretWord';
 import LetterInputForm from './LetterInputForm';
+import GuessFeedbackSnackbar from './GuessFeedbackSnackbar';
 
 class App extends Component {
   constructor(props) {
@@ -54,6 +55,7 @@ class App extends Component {
         <div>
           <LetterInputForm handleUserGuess={this.handleUserGuess} />
         </div>
+        <GuessFeedbackSnackbar />
       </div>
     );
   }
