@@ -25,8 +25,13 @@ class App extends Component {
       });
   }
 
+  handleUserGuess = guessedLetter => {
+    console.log(guessedLetter);
+  };
+
   render() {
     const { visibleLetters, temp } = this.state;
+
     return (
       <div>
         <div>{temp}</div>
@@ -34,7 +39,7 @@ class App extends Component {
           <SecretWord visibleLetters={visibleLetters} />
         </Grid>
         <div>
-          <LetterInputForm />
+          <LetterInputForm handleUserGuess={this.handleUserGuess} />
         </div>
       </div>
     );

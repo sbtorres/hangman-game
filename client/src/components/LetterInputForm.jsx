@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Grid, TextField, Button } from '@material-ui/core';
 
-const LetterInputForm = () => {
+const LetterInputForm = ({ handleUserGuess }) => {
   const [letterInput, setLetterInput] = useState('');
 
   const handleChange = e => {
@@ -10,7 +11,7 @@ const LetterInputForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(letterInput);
+    handleUserGuess(letterInput);
   };
 
   return (
@@ -30,6 +31,10 @@ const LetterInputForm = () => {
       </form>
     </Grid>
   );
+};
+
+LetterInputForm.propTypes = {
+  handleUserGuess: PropTypes.func.isRequired
 };
 
 export default LetterInputForm;
