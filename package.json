@@ -23,6 +23,7 @@
   "homepage": "https://github.com/sbtorres/hangman-game#readme",
   "dependencies": {
     "@material-ui/core": "^4.4.3",
+    "@material-ui/icons": "^4.4.3",
     "axios": "^0.19.0",
     "express": "^4.17.1",
     "morgan": "^1.9.1",
