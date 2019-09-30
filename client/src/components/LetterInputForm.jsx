@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Grid, TextField, Button } from '@material-ui/core';
 
 const LetterInputForm = ({ handleUserGuess }) => {
   const [letterInput, setLetterInput] = useState('');
+  const inputEl = useRef(null);
 
   const handleChange = e => {
     setLetterInput(e.target.value.toLowerCase());
@@ -13,6 +14,7 @@ const LetterInputForm = ({ handleUserGuess }) => {
     e.preventDefault();
     handleUserGuess(letterInput);
     setLetterInput('');
+    inputEl.current.focus();
   };
 
   return (
@@ -25,6 +27,8 @@ const LetterInputForm = ({ handleUserGuess }) => {
           onChange={handleChange}
           onBlur={handleChange}
           inputProps={{ maxLength: 1 }}
+          inputRef={inputEl}
+          autoFocus
         />
         <Button variant="contained" size="medium" type="submit">
           Make A Guess!
