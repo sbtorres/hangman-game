@@ -12,6 +12,7 @@ const LetterInputForm = ({ handleUserGuess }) => {
   const handleSubmit = e => {
     e.preventDefault();
     handleUserGuess(letterInput);
+    setLetterInput('');
   };
 
   return (
@@ -20,7 +21,7 @@ const LetterInputForm = ({ handleUserGuess }) => {
         <TextField
           id="letter-input"
           label="Guess A Letter:"
-          value={letterInput.name}
+          value={letterInput}
           onChange={handleChange}
           onBlur={handleChange}
           inputProps={{ maxLength: 1 }}
