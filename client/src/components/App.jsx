@@ -28,8 +28,10 @@ class App extends Component {
   handleUserGuess = guessedLetter => {
     axios
       .get(`http://localhost:3000/checkGuess/${guessedLetter}`)
-      .then(data => {
-        console.log(data);
+      .then(({ data }) => {
+        this.setState({
+          visibleLetters: data.charactersArray
+        });
       })
       .catch(err => {
         console.log(err);
