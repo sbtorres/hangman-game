@@ -27,13 +27,16 @@ app.get('/getInitialString', (req, res) => {
 
 app.get('/checkGuess/:guessedLetter', (req, res) => {
   const { guessedLetter } = req.params;
+  let correctGuess = false;
+
   for (let idx = 0; idx < secretWord.length; idx += 1) {
     if (guessedLetter === secretWord[idx]) {
       charactersArray[idx] = guessedLetter;
+      correctGuess = true;
     }
   }
 
-  res.status(200).send({ charactersArray });
+  res.status(200).send({ charactersArray, correctGuess });
 });
 
 app.listen(PORT, () => console.log(`Express server listening on PORT ${PORT}`));

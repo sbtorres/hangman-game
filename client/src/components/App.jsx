@@ -29,9 +29,13 @@ class App extends Component {
     axios
       .get(`http://localhost:3000/checkGuess/${guessedLetter}`)
       .then(({ data }) => {
-        this.setState({
-          visibleLetters: data.charactersArray
-        });
+        if (data.correctGuess) {
+          this.setState({
+            visibleLetters: data.charactersArray
+          });
+        } else {
+          console.log('Incorrect!');
+        }
       })
       .catch(err => {
         console.log(err);
