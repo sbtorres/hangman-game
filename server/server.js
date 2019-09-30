@@ -5,6 +5,7 @@ const axios = require('axios');
 const PORT = 3000;
 const app = express();
 let secretWord = '';
+let charactersArray = [];
 
 app.use(express.static('client/public'));
 app.use(morgan('tiny'));
@@ -14,7 +15,7 @@ app.get('/getInitialString', (req, res) => {
   axios
     .get(`http://app.linkedin-reach.io/words?start=${randomInt}&count=1`)
     .then(({ data }) => {
-      const charactersArray = new Array(data.length);
+      charactersArray = new Array(data.length);
       secretWord = data;
       charactersArray.fill('_');
       res.status(200).send({ charactersArray, data });
@@ -24,10 +25,15 @@ app.get('/getInitialString', (req, res) => {
     });
 });
 
-app.get('/checkGuess/:letter', (req, res) => {
-  const guessedLetter = req.params.letter;
-  console.log(secretWord);
-  res.status(200).send({ guessedLetter });
+app.get('/checkGuess/:guessedLetter', (req, res) => {
+  const { guessedLetter } = req.params;
+  for (let idx = 0; idx < secretWord.length; idx += 1) {
+    if (guessedLetter === secretWord[idx]) {
+      charactersArray[idx] = guessedLetter;
+    }
+  }
+
+  res.status(200).send({ charactersArray });
 });
 
 app.listen(PORT, () => console.log(`Express server listening on PORT ${PORT}`));
