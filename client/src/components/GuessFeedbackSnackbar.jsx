@@ -11,14 +11,14 @@ const GuessFeedbackSnackbar = () => {
   return (
     <Snackbar
       anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
-      autoHideDuration={2000}
+      autoHideDuration={20000}
       open={isOpen}
       onClose={onClose}
     >
       <GuessFeedbackSnackbarContentWrapper
         message="Test!"
         onClose={onClose}
-        variant="correct"
+        variant="incorrect"
       />
     </Snackbar>
   );
