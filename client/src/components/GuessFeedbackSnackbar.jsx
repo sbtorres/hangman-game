@@ -15,7 +15,11 @@ const GuessFeedbackSnackbar = () => {
       open={isOpen}
       onClose={onClose}
     >
-      <GuessFeedbackSnackbarContentWrapper message="Test!" onClose={onClose} />
+      <GuessFeedbackSnackbarContentWrapper
+        message="Test!"
+        onClose={onClose}
+        variant="correct"
+      />
     </Snackbar>
   );
 };
