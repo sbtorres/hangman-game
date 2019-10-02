@@ -16,7 +16,7 @@ class App extends Component {
       lastGuess: 'null',
       snackbarIsOpen: false,
       numOfIncorrectGuesses: 0,
-      showEndOfGameModal: true
+      showEndOfGameModal: false
     };
   }
 
@@ -46,11 +46,17 @@ class App extends Component {
           });
         } else {
           const { numOfIncorrectGuesses } = this.state;
-          this.setState({
-            lastGuess: 'incorrect',
-            snackbarIsOpen: true,
-            numOfIncorrectGuesses: numOfIncorrectGuesses + 1
-          });
+          if (numOfIncorrectGuesses === 5) {
+            this.setState({
+              showEndOfGameModal: true
+            });
+          } else {
+            this.setState({
+              lastGuess: 'incorrect',
+              snackbarIsOpen: true,
+              numOfIncorrectGuesses: numOfIncorrectGuesses + 1
+            });
+          }
         }
       })
       .catch(err => {
@@ -69,7 +75,7 @@ class App extends Component {
       lastGuess: 'null',
       snackbarIsOpen: false,
       numOfIncorrectGuesses: 0,
-      showEndOfGameModal: true
+      showEndOfGameModal: false
     });
     this.componentDidMount();
   };
