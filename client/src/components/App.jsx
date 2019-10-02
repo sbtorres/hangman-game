@@ -84,6 +84,7 @@ class App extends Component {
   handleGameRestart = () => {
     this.setState({
       lastGuess: 'null',
+      isWinner: false,
       snackbarIsOpen: false,
       incorrectGuesses: [],
       showEndOfGameModal: false
