@@ -16,7 +16,7 @@ class App extends Component {
       lastGuess: 'null',
       snackbarIsOpen: false,
       numOfIncorrectGuesses: 0,
-      showEndOfGameModal: false
+      showEndOfGameModal: true
     };
   }
 
