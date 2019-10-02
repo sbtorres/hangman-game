@@ -6,7 +6,8 @@ const PreviousGuessesView = ({ numOfIncorrectGuesses, incorrectGuesses }) => {
   return (
     <Paper>
       <Typography variant="h5">
-        Guesses Remaining: {6 - numOfIncorrectGuesses}
+        Guesses Remaining:
+        {` ${6 - numOfIncorrectGuesses}`}
       </Typography>
       <Typography variant="h5">
         Incorrect Guesses:
