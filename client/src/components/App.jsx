@@ -105,7 +105,13 @@ class App extends Component {
     return (
       <div>
         <div>{temp}</div>
-        <Grid container direction="column" justify="center" alignItems="center">
+        <Grid
+          container
+          direction="column"
+          justify="center"
+          alignItems="center"
+          alignContent="center"
+        >
           <SecretWord visibleLetters={visibleLetters} />
         </Grid>
         <div>
