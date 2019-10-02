@@ -14,11 +14,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const EndOfGameModal = ({ showEndOfGameModal }) => {
+const EndOfGameModal = ({ showEndOfGameModal, handleGameRestart }) => {
   const classes = useStyles();
 
   const handleClose = () => {
-    console.log('close!');
+    handleGameRestart();
   };
 
   return (

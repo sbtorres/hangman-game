@@ -64,6 +64,10 @@ class App extends Component {
     });
   };
 
+  handleGameRestart = () => {
+    console.log('game restart!');
+  };
+
   render() {
     const {
       visibleLetters,
@@ -82,7 +86,10 @@ class App extends Component {
         <div>
           <LetterInputForm handleUserGuess={this.handleUserGuess} />
         </div>
-        <EndOfGameModal showEndOfGameModal={showEndOfGameModal} />
+        <EndOfGameModal
+          showEndOfGameModal={showEndOfGameModal}
+          handleGameRestart={this.handleGameRestart}
+        />
         <GuessFeedbackSnackbar
           lastGuess={lastGuess}
           isOpen={snackbarIsOpen}
