@@ -18,7 +18,13 @@ const LetterInputForm = ({ handleUserGuess }) => {
   };
 
   return (
-    <Grid container direction="row" justify="center" alignItems="center">
+    <Grid
+      container
+      direction="row"
+      justify="center"
+      alignItems="center"
+      alignText="center"
+    >
       <form onSubmit={handleSubmit}>
         <TextField
           id="letter-input"
@@ -28,9 +34,16 @@ const LetterInputForm = ({ handleUserGuess }) => {
           onBlur={handleChange}
           inputProps={{ maxLength: 1 }}
           inputRef={inputEl}
+          variant="outlined"
+          margin="dense"
           autoFocus
         />
-        <Button variant="contained" size="medium" type="submit">
+        <Button
+          variant="contained"
+          size="medium"
+          type="submit"
+          style={{ margin: 8 }}
+        >
           Make A Guess!
         </Button>
       </form>
