@@ -13,7 +13,8 @@ class App extends Component {
       visibleLetters: [],
       temp: '',
       lastGuess: 'null',
-      snackbarIsOpen: false
+      snackbarIsOpen: false,
+      numOfIncorrectGuesses: 0
     };
   }
 
@@ -42,9 +43,11 @@ class App extends Component {
             snackbarIsOpen: true
           });
         } else {
+          const { numOfIncorrectGuesses } = this.state;
           this.setState({
             lastGuess: 'incorrect',
-            snackbarIsOpen: true
+            snackbarIsOpen: true,
+            numOfIncorrectGuesses: numOfIncorrectGuesses + 1
           });
         }
       })
