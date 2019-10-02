@@ -16,6 +16,7 @@ class App extends Component {
       lastGuess: 'null',
       snackbarIsOpen: false,
       numOfIncorrectGuesses: 0,
+      isWinner: false,
       showEndOfGameModal: false
     };
   }
@@ -86,6 +87,7 @@ class App extends Component {
       temp,
       lastGuess,
       snackbarIsOpen,
+      isWinner,
       showEndOfGameModal
     } = this.state;
 
@@ -101,6 +103,7 @@ class App extends Component {
         <EndOfGameModal
           showEndOfGameModal={showEndOfGameModal}
           handleGameRestart={this.handleGameRestart}
+          isWinner={isWinner}
         />
         <GuessFeedbackSnackbar
           lastGuess={lastGuess}
