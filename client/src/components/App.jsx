@@ -4,6 +4,7 @@ import axios from 'axios';
 import SecretWord from './SecretWord';
 import LetterInputForm from './LetterInputForm';
 import GuessFeedbackSnackbar from './GuessFeedbackSnackbar';
+import EndOfGameModal from './EndOfGameModal';
 
 class App extends Component {
   constructor(props) {
@@ -14,7 +15,8 @@ class App extends Component {
       temp: '',
       lastGuess: 'null',
       snackbarIsOpen: false,
-      numOfIncorrectGuesses: 0
+      numOfIncorrectGuesses: 0,
+      showEndOfGameModal: false
     };
   }
 
@@ -63,7 +65,13 @@ class App extends Component {
   };
 
   render() {
-    const { visibleLetters, temp, lastGuess, snackbarIsOpen } = this.state;
+    const {
+      visibleLetters,
+      temp,
+      lastGuess,
+      snackbarIsOpen,
+      showEndOfGameModal
+    } = this.state;
 
     return (
       <div>
@@ -74,6 +82,7 @@ class App extends Component {
         <div>
           <LetterInputForm handleUserGuess={this.handleUserGuess} />
         </div>
+        <EndOfGameModal showEndOfGameModal={showEndOfGameModal} />
         <GuessFeedbackSnackbar
           lastGuess={lastGuess}
           isOpen={snackbarIsOpen}
