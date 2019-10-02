@@ -4,6 +4,7 @@ import axios from 'axios';
 import SecretWord from './SecretWord';
 import LetterInputForm from './LetterInputForm';
 import GuessFeedbackSnackbar from './GuessFeedbackSnackbar';
+import EndOfGameModal from './EndOfGameModal';
 
 class App extends Component {
   constructor(props) {
@@ -13,7 +14,10 @@ class App extends Component {
       visibleLetters: [],
       temp: '',
       lastGuess: 'null',
-      snackbarIsOpen: false
+      snackbarIsOpen: false,
+      numOfIncorrectGuesses: 0,
+      isWinner: false,
+      showEndOfGameModal: false
     };
   }
 
@@ -36,16 +40,32 @@ class App extends Component {
       .get(`http://localhost:3000/checkGuess/${guessedLetter}`)
       .then(({ data }) => {
         if (data.correctGuess) {
-          this.setState({
-            visibleLetters: data.charactersArray,
-            lastGuess: 'correct',
-            snackbarIsOpen: true
-          });
+          if (data.hasWon) {
+            this.setState({
+              visibleLetters: data.charactersArray,
+              showEndOfGameModal: true,
+              isWinner: data.hasWon
+            });
+          } else {
+            this.setState({
+              visibleLetters: data.charactersArray,
+              lastGuess: 'correct',
+              snackbarIsOpen: true
+            });
+          }
         } else {
-          this.setState({
-            lastGuess: 'incorrect',
-            snackbarIsOpen: true
-          });
+          const { numOfIncorrectGuesses } = this.state;
+          if (numOfIncorrectGuesses === 5) {
+            this.setState({
+              showEndOfGameModal: true
+            });
+          } else {
+            this.setState({
+              lastGuess: 'incorrect',
+              snackbarIsOpen: true,
+              numOfIncorrectGuesses: numOfIncorrectGuesses + 1
+            });
+          }
         }
       })
       .catch(err => {
@@ -59,8 +79,25 @@ class App extends Component {
     });
   };
 
+  handleGameRestart = () => {
+    this.setState({
+      lastGuess: 'null',
+      snackbarIsOpen: false,
+      numOfIncorrectGuesses: 0,
+      showEndOfGameModal: false
+    });
+    this.componentDidMount();
+  };
+
   render() {
-    const { visibleLetters, temp, lastGuess, snackbarIsOpen } = this.state;
+    const {
+      visibleLetters,
+      temp,
+      lastGuess,
+      snackbarIsOpen,
+      isWinner,
+      showEndOfGameModal
+    } = this.state;
 
     return (
       <div>
@@ -71,6 +108,11 @@ class App extends Component {
         <div>
           <LetterInputForm handleUserGuess={this.handleUserGuess} />
         </div>
+        <EndOfGameModal
+          showEndOfGameModal={showEndOfGameModal}
+          handleGameRestart={this.handleGameRestart}
+          isWinner={isWinner}
+        />
         <GuessFeedbackSnackbar
           lastGuess={lastGuess}
           isOpen={snackbarIsOpen}
