@@ -5,6 +5,7 @@ import SecretWord from './SecretWord';
 import LetterInputForm from './LetterInputForm';
 import GuessFeedbackSnackbar from './GuessFeedbackSnackbar';
 import EndOfGameModal from './EndOfGameModal';
+import PreviousGuessesView from './PreviousGuessesView';
 
 class App extends Component {
   constructor(props) {
@@ -107,6 +108,9 @@ class App extends Component {
         </Grid>
         <div>
           <LetterInputForm handleUserGuess={this.handleUserGuess} />
+        </div>
+        <div>
+          <PreviousGuessesView />
         </div>
         <EndOfGameModal
           showEndOfGameModal={showEndOfGameModal}
