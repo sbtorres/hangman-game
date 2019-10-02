@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Modal } from '@material-ui/core';
+import { Modal, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
@@ -33,6 +33,9 @@ const EndOfGameModal = ({ showEndOfGameModal, handleGameRestart }) => {
         <p id="simple-modal-description">
           Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
         </p>
+        <Button variant="contained" onClick={handleClose}>
+          Start a New Game!
+        </Button>
       </div>
     </Modal>
   );
