@@ -40,11 +40,19 @@ class App extends Component {
       .get(`http://localhost:3000/checkGuess/${guessedLetter}`)
       .then(({ data }) => {
         if (data.correctGuess) {
-          this.setState({
-            visibleLetters: data.charactersArray,
-            lastGuess: 'correct',
-            snackbarIsOpen: true
-          });
+          if (data.hasWon) {
+            this.setState({
+              visibleLetters: data.charactersArray,
+              showEndOfGameModal: true,
+              isWinner: data.hasWon
+            });
+          } else {
+            this.setState({
+              visibleLetters: data.charactersArray,
+              lastGuess: 'correct',
+              snackbarIsOpen: true
+            });
+          }
         } else {
           const { numOfIncorrectGuesses } = this.state;
           if (numOfIncorrectGuesses === 5) {
