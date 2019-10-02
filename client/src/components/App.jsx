@@ -17,7 +17,6 @@ class App extends Component {
       temp: '',
       lastGuess: 'null',
       snackbarIsOpen: false,
-      numOfIncorrectGuesses: 0,
       isWinner: false,
       showEndOfGameModal: false
     };
@@ -56,17 +55,17 @@ class App extends Component {
             });
           }
         } else {
-          const { numOfIncorrectGuesses } = this.state;
-          if (numOfIncorrectGuesses === 5) {
+          const { incorrectGuesses } = this.state;
+          if (incorrectGuesses.length === 5) {
             this.setState({
+              incorrectGuesses: data.incorrectGuesses,
               showEndOfGameModal: true
             });
           } else {
             this.setState({
               incorrectGuesses: data.incorrectGuesses,
               lastGuess: 'incorrect',
-              snackbarIsOpen: true,
-              numOfIncorrectGuesses: numOfIncorrectGuesses + 1
+              snackbarIsOpen: true
             });
           }
         }
@@ -86,7 +85,7 @@ class App extends Component {
     this.setState({
       lastGuess: 'null',
       snackbarIsOpen: false,
-      numOfIncorrectGuesses: 0,
+      incorrectGuesses: [],
       showEndOfGameModal: false
     });
     this.componentDidMount();
@@ -100,8 +99,7 @@ class App extends Component {
       lastGuess,
       snackbarIsOpen,
       isWinner,
-      showEndOfGameModal,
-      numOfIncorrectGuesses
+      showEndOfGameModal
     } = this.state;
 
     return (
@@ -114,10 +112,7 @@ class App extends Component {
           <LetterInputForm handleUserGuess={this.handleUserGuess} />
         </div>
         <div>
-          <PreviousGuessesView
-            numOfIncorrectGuesses={numOfIncorrectGuesses}
-            incorrectGuesses={incorrectGuesses}
-          />
+          <PreviousGuessesView incorrectGuesses={incorrectGuesses} />
         </div>
         <EndOfGameModal
           showEndOfGameModal={showEndOfGameModal}

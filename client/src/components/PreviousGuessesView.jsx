@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Paper, Typography } from '@material-ui/core';
 
-const PreviousGuessesView = ({ numOfIncorrectGuesses, incorrectGuesses }) => {
+const PreviousGuessesView = ({ incorrectGuesses }) => {
   return (
     <Paper>
       <Typography variant="h5">
         Guesses Remaining:
-        {` ${6 - numOfIncorrectGuesses}`}
+        {` ${6 - incorrectGuesses.length}`}
       </Typography>
       <Typography variant="h5">
         Incorrect Guesses:
@@ -18,7 +18,6 @@ const PreviousGuessesView = ({ numOfIncorrectGuesses, incorrectGuesses }) => {
 };
 
 PreviousGuessesView.propTypes = {
-  numOfIncorrectGuesses: PropTypes.number.isRequired,
   incorrectGuesses: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
