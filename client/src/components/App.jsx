@@ -65,7 +65,13 @@ class App extends Component {
   };
 
   handleGameRestart = () => {
-    console.log('game restart!');
+    this.setState({
+      lastGuess: 'null',
+      snackbarIsOpen: false,
+      numOfIncorrectGuesses: 0,
+      showEndOfGameModal: true
+    });
+    this.componentDidMount();
   };
 
   render() {
