@@ -6,6 +6,7 @@ const PORT = 3000;
 const app = express();
 let secretWord = '';
 let charactersArray = [];
+let incorrectGuesses = [];
 
 app.use(express.static('client/public'));
 app.use(morgan('tiny'));
@@ -40,7 +41,13 @@ app.get('/checkGuess/:guessedLetter', (req, res) => {
     }
   }
 
-  res.status(200).send({ charactersArray, correctGuess, hasWon });
+  if (!correctGuess) {
+    incorrectGuesses.push(guessedLetter.toUpperCase());
+  }
+
+  res
+    .status(200)
+    .send({ charactersArray, incorrectGuesses, correctGuess, hasWon });
 });
 
 app.listen(PORT, () => console.log(`Express server listening on PORT ${PORT}`));

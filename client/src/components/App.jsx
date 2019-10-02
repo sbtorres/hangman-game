@@ -13,6 +13,7 @@ class App extends Component {
 
     this.state = {
       visibleLetters: [],
+      incorrectGuesses: [],
       temp: '',
       lastGuess: 'null',
       snackbarIsOpen: false,
@@ -62,6 +63,7 @@ class App extends Component {
             });
           } else {
             this.setState({
+              incorrectGuesses: data.incorrectGuesses,
               lastGuess: 'incorrect',
               snackbarIsOpen: true,
               numOfIncorrectGuesses: numOfIncorrectGuesses + 1
@@ -93,11 +95,13 @@ class App extends Component {
   render() {
     const {
       visibleLetters,
+      incorrectGuesses,
       temp,
       lastGuess,
       snackbarIsOpen,
       isWinner,
-      showEndOfGameModal
+      showEndOfGameModal,
+      numOfIncorrectGuesses
     } = this.state;
 
     return (
@@ -110,7 +114,10 @@ class App extends Component {
           <LetterInputForm handleUserGuess={this.handleUserGuess} />
         </div>
         <div>
-          <PreviousGuessesView />
+          <PreviousGuessesView
+            numOfIncorrectGuesses={numOfIncorrectGuesses}
+            incorrectGuesses={incorrectGuesses}
+          />
         </div>
         <EndOfGameModal
           showEndOfGameModal={showEndOfGameModal}
