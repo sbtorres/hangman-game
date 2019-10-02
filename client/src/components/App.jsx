@@ -6,6 +6,7 @@ import LetterInputForm from './LetterInputForm';
 import GuessFeedbackSnackbar from './GuessFeedbackSnackbar';
 import EndOfGameModal from './EndOfGameModal';
 import PreviousGuessesView from './PreviousGuessesView';
+import LinkedInImage from './LinkedInImage';
 
 class App extends Component {
   constructor(props) {
@@ -113,6 +114,7 @@ class App extends Component {
           alignItems="center"
           alignContent="center"
         >
+          <LinkedInImage />
           <SecretWord visibleLetters={visibleLetters} />
         </Grid>
         <div>
