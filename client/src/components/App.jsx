@@ -5,6 +5,7 @@ import SecretWord from './SecretWord';
 import LetterInputForm from './LetterInputForm';
 import GuessFeedbackSnackbar from './GuessFeedbackSnackbar';
 import EndOfGameModal from './EndOfGameModal';
+import PreviousGuessesView from './PreviousGuessesView';
 
 class App extends Component {
   constructor(props) {
@@ -12,10 +13,10 @@ class App extends Component {
 
     this.state = {
       visibleLetters: [],
+      incorrectGuesses: [],
       temp: '',
       lastGuess: 'null',
       snackbarIsOpen: false,
-      numOfIncorrectGuesses: 0,
       isWinner: false,
       showEndOfGameModal: false
     };
@@ -54,16 +55,17 @@ class App extends Component {
             });
           }
         } else {
-          const { numOfIncorrectGuesses } = this.state;
-          if (numOfIncorrectGuesses === 5) {
+          const { incorrectGuesses } = this.state;
+          if (incorrectGuesses.length === 5) {
             this.setState({
+              incorrectGuesses: data.incorrectGuesses,
               showEndOfGameModal: true
             });
           } else {
             this.setState({
+              incorrectGuesses: data.incorrectGuesses,
               lastGuess: 'incorrect',
-              snackbarIsOpen: true,
-              numOfIncorrectGuesses: numOfIncorrectGuesses + 1
+              snackbarIsOpen: true
             });
           }
         }
@@ -83,7 +85,7 @@ class App extends Component {
     this.setState({
       lastGuess: 'null',
       snackbarIsOpen: false,
-      numOfIncorrectGuesses: 0,
+      incorrectGuesses: [],
       showEndOfGameModal: false
     });
     this.componentDidMount();
@@ -92,6 +94,7 @@ class App extends Component {
   render() {
     const {
       visibleLetters,
+      incorrectGuesses,
       temp,
       lastGuess,
       snackbarIsOpen,
@@ -102,11 +105,20 @@ class App extends Component {
     return (
       <div>
         <div>{temp}</div>
-        <Grid container direction="column" justify="center" alignItems="center">
+        <Grid
+          container
+          direction="column"
+          justify="center"
+          alignItems="center"
+          alignContent="center"
+        >
           <SecretWord visibleLetters={visibleLetters} />
         </Grid>
         <div>
           <LetterInputForm handleUserGuess={this.handleUserGuess} />
+        </div>
+        <div style={{ padding: 10 }}>
+          <PreviousGuessesView incorrectGuesses={incorrectGuesses} />
         </div>
         <EndOfGameModal
           showEndOfGameModal={showEndOfGameModal}

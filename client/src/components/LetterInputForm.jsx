@@ -18,13 +18,7 @@ const LetterInputForm = ({ handleUserGuess }) => {
   };
 
   return (
-    <Grid
-      container
-      direction="row"
-      justify="center"
-      alignItems="center"
-      alignText="center"
-    >
+    <Grid container direction="row" justify="center" alignItems="center">
       <form onSubmit={handleSubmit}>
         <TextField
           id="letter-input"
