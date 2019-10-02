@@ -1,27 +1,33 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Snackbar } from '@material-ui/core';
 import GuessFeedbackSnackbarContentWrapper from './GuessFeedbackSnackbarContentWrapper';
 
-const GuessFeedbackSnackbar = () => {
-  const [isOpen, setIsOpen] = useState(true);
+const GuessFeedbackSnackbar = ({ isOpen, lastGuess, handleSnackbarClose }) => {
   const onClose = () => {
-    setIsOpen(false);
+    handleSnackbarClose();
   };
 
   return (
     <Snackbar
       anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
-      autoHideDuration={20000}
+      autoHideDuration={1000}
       open={isOpen}
       onClose={onClose}
     >
       <GuessFeedbackSnackbarContentWrapper
-        message="Test!"
+        message={lastGuess}
         onClose={onClose}
-        variant="incorrect"
+        variant={lastGuess}
       />
     </Snackbar>
   );
+};
+
+GuessFeedbackSnackbar.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  lastGuess: PropTypes.string.isRequired,
+  handleSnackbarClose: PropTypes.func.isRequired
 };
 
 export default GuessFeedbackSnackbar;

@@ -4,16 +4,16 @@ import { SnackbarContent, IconButton } from '@material-ui/core';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import ErrorIcon from '@material-ui/icons/Error';
 import { makeStyles } from '@material-ui/core/styles';
-import { green, red } from '@material-ui/core/colors';
+import { green } from '@material-ui/core/colors';
 import CloseIcon from '@material-ui/icons/Close';
 
 const GuessFeedbackSnackbarContentWrapper = ({ message, onClose, variant }) => {
   const variantIcon = {
-    success: CheckCircleIcon,
+    correct: CheckCircleIcon,
     incorrect: ErrorIcon
   };
   const useStyles1 = makeStyles(theme => ({
-    success: {
+    correct: {
       backgroundColor: green[600]
     },
     incorrect: {

@@ -9,7 +9,12 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { visibleLetters: [], temp: '' };
+    this.state = {
+      visibleLetters: [],
+      temp: '',
+      lastGuess: 'null',
+      snackbarIsOpen: false
+    };
   }
 
   componentDidMount() {
@@ -32,10 +37,15 @@ class App extends Component {
       .then(({ data }) => {
         if (data.correctGuess) {
           this.setState({
-            visibleLetters: data.charactersArray
+            visibleLetters: data.charactersArray,
+            lastGuess: 'correct',
+            snackbarIsOpen: true
           });
         } else {
-          console.log('Incorrect!');
+          this.setState({
+            lastGuess: 'incorrect',
+            snackbarIsOpen: true
+          });
         }
       })
       .catch(err => {
@@ -43,8 +53,14 @@ class App extends Component {
       });
   };
 
+  handleSnackbarClose = () => {
+    this.setState({
+      snackbarIsOpen: false
+    });
+  };
+
   render() {
-    const { visibleLetters, temp } = this.state;
+    const { visibleLetters, temp, lastGuess, snackbarIsOpen } = this.state;
 
     return (
       <div>
@@ -55,7 +71,11 @@ class App extends Component {
         <div>
           <LetterInputForm handleUserGuess={this.handleUserGuess} />
         </div>
-        <GuessFeedbackSnackbar />
+        <GuessFeedbackSnackbar
+          lastGuess={lastGuess}
+          isOpen={snackbarIsOpen}
+          handleSnackbarClose={this.handleSnackbarClose}
+        />
       </div>
     );
   }
