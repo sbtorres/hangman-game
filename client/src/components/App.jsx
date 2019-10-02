@@ -111,7 +111,7 @@ class App extends Component {
         <div>
           <LetterInputForm handleUserGuess={this.handleUserGuess} />
         </div>
-        <div>
+        <div style={{ padding: 10 }}>
           <PreviousGuessesView incorrectGuesses={incorrectGuesses} />
         </div>
         <EndOfGameModal
