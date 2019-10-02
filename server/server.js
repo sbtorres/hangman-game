@@ -17,6 +17,7 @@ app.get('/getInitialString', (req, res) => {
     .get(`http://app.linkedin-reach.io/words?start=${randomInt}&count=1`)
     .then(({ data }) => {
       charactersArray = new Array(data.length);
+      incorrectGuesses = [];
       secretWord = data;
       charactersArray.fill('_');
       res.status(200).send({ charactersArray, data });
