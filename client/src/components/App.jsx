@@ -3,12 +3,18 @@ import { Grid } from '@material-ui/core';
 import axios from 'axios';
 import SecretWord from './SecretWord';
 import LetterInputForm from './LetterInputForm';
+import GuessFeedbackSnackbar from './GuessFeedbackSnackbar';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { visibleLetters: [], temp: '' };
+    this.state = {
+      visibleLetters: [],
+      temp: '',
+      lastGuess: 'null',
+      snackbarIsOpen: false
+    };
   }
 
   componentDidMount() {
@@ -25,8 +31,37 @@ class App extends Component {
       });
   }
 
+  handleUserGuess = guessedLetter => {
+    axios
+      .get(`http://localhost:3000/checkGuess/${guessedLetter}`)
+      .then(({ data }) => {
+        if (data.correctGuess) {
+          this.setState({
+            visibleLetters: data.charactersArray,
+            lastGuess: 'correct',
+            snackbarIsOpen: true
+          });
+        } else {
+          this.setState({
+            lastGuess: 'incorrect',
+            snackbarIsOpen: true
+          });
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  handleSnackbarClose = () => {
+    this.setState({
+      snackbarIsOpen: false
+    });
+  };
+
   render() {
-    const { visibleLetters, temp } = this.state;
+    const { visibleLetters, temp, lastGuess, snackbarIsOpen } = this.state;
+
     return (
       <div>
         <div>{temp}</div>
@@ -34,8 +69,13 @@ class App extends Component {
           <SecretWord visibleLetters={visibleLetters} />
         </Grid>
         <div>
-          <LetterInputForm />
+          <LetterInputForm handleUserGuess={this.handleUserGuess} />
         </div>
+        <GuessFeedbackSnackbar
+          lastGuess={lastGuess}
+          isOpen={snackbarIsOpen}
+          handleSnackbarClose={this.handleSnackbarClose}
+        />
       </div>
     );
   }
