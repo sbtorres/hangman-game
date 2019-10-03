@@ -47,10 +47,21 @@ const checkGuess = (req, res) => {
       hasWon,
       secretWord
     });
+  } else if (hasWon) {
+    res.status(200).send({
+      charactersArray,
+      incorrectGuesses,
+      correctGuess,
+      hasWon,
+      secretWord
+    });
   } else {
-    res
-      .status(200)
-      .send({ charactersArray, incorrectGuesses, correctGuess, hasWon });
+    res.status(200).send({
+      charactersArray,
+      incorrectGuesses,
+      correctGuess,
+      hasWon
+    });
   }
 };
 

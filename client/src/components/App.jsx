@@ -44,6 +44,7 @@ class App extends Component {
           if (data.hasWon) {
             this.setState({
               visibleLetters: data.charactersArray,
+              secretWord: data.secretWord,
               showEndOfGameModal: true,
               isWinner: data.hasWon
             });
@@ -85,6 +86,7 @@ class App extends Component {
   handleGameRestart = () => {
     this.setState({
       lastGuess: 'null',
+      secretWord: '',
       isWinner: false,
       snackbarIsOpen: false,
       incorrectGuesses: [],
