@@ -121,6 +121,7 @@ class App extends Component {
           <LetterInputForm
             handleUserGuess={this.handleUserGuess}
             incorrectGuesses={incorrectGuesses}
+            visibleLetters={visibleLetters}
           />
         </div>
         <div style={{ padding: 10 }}>

@@ -2,14 +2,21 @@ import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Grid, TextField, Button } from '@material-ui/core';
 
-const LetterInputForm = ({ handleUserGuess, incorrectGuesses }) => {
+const LetterInputForm = ({
+  handleUserGuess,
+  incorrectGuesses,
+  visibleLetters
+}) => {
   const [letterInput, setLetterInput] = useState('');
   const [isInvalidInput, setIsInvalidInput] = useState(false);
   const inputEl = useRef(null);
 
   const handleChange = e => {
     const letter = e.target.value.toLowerCase();
-    if (incorrectGuesses.includes(letter.toUpperCase())) {
+    if (
+      incorrectGuesses.includes(letter.toUpperCase()) ||
+      visibleLetters.includes(letter)
+    ) {
       setIsInvalidInput(true);
     } else {
       setIsInvalidInput(false);
@@ -60,7 +67,8 @@ const LetterInputForm = ({ handleUserGuess, incorrectGuesses }) => {
 
 LetterInputForm.propTypes = {
   handleUserGuess: PropTypes.func.isRequired,
-  incorrectGuesses: PropTypes.arrayOf(PropTypes.string).isRequired
+  incorrectGuesses: PropTypes.arrayOf(PropTypes.string).isRequired,
+  visibleLetters: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default LetterInputForm;
