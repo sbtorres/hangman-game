@@ -8,9 +8,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 1. Fork the repository.
 2. Clone the repository down to your local machine using the `git clone` command.
-3. Install project dependencies using the `npm install` command.
-4. Build the project using the command `npm run build:prod`.
-5. Start the server using the command `npm run server`.
+3. Install project dependencies by running `npm install` in the terminal from the root folder of the repository.
+4. Build the project using the shell command `npm run build:prod`.
+5. Start the server using the shell command `npm run start`.
 6. Navigate to [http://localhost:3000](http://localhost:3000) to play the game!
 
 ## Game Rules
