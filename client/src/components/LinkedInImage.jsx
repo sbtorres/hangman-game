@@ -3,6 +3,13 @@ import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 
 const LinkedInImage = ({ incorrectGuesses }) => {
+  const zIndex1 = incorrectGuesses.length >= 1 ? 1 : 3;
+  const zIndex2 = incorrectGuesses.length >= 2 ? 1 : 3;
+  const zIndex3 = incorrectGuesses.length >= 3 ? 1 : 3;
+  const zIndex4 = incorrectGuesses.length >= 4 ? 1 : 3;
+  const zIndex5 = incorrectGuesses.length >= 5 ? 1 : 3;
+  const zIndex6 = incorrectGuesses.length >= 6 ? 1 : 3;
+
   return (
     <Grid
       container
@@ -28,7 +35,7 @@ const LinkedInImage = ({ incorrectGuesses }) => {
             width: '100px',
             position: 'relative',
             backgroundColor: 'white',
-            zIndex: 3
+            zIndex: zIndex1
           }}
         />
         <Grid
@@ -37,7 +44,7 @@ const LinkedInImage = ({ incorrectGuesses }) => {
             width: '100px',
             position: 'relative',
             backgroundColor: 'white',
-            zIndex: 3
+            zIndex: zIndex2
           }}
         />
         <Grid
@@ -46,7 +53,7 @@ const LinkedInImage = ({ incorrectGuesses }) => {
             width: '100px',
             position: 'relative',
             backgroundColor: 'white',
-            zIndex: 3
+            zIndex: zIndex3
           }}
         />
       </div>
@@ -57,7 +64,7 @@ const LinkedInImage = ({ incorrectGuesses }) => {
             width: '100px',
             position: 'relative',
             backgroundColor: 'white',
-            zIndex: 3
+            zIndex: zIndex4
           }}
         />
         <Grid
@@ -66,7 +73,7 @@ const LinkedInImage = ({ incorrectGuesses }) => {
             width: '100px',
             position: 'relative',
             backgroundColor: 'white',
-            zIndex: 3
+            zIndex: zIndex5
           }}
         />
         <Grid
@@ -75,7 +82,7 @@ const LinkedInImage = ({ incorrectGuesses }) => {
             width: '100px',
             position: 'relative',
             backgroundColor: 'white',
-            zIndex: 3
+            zIndex: zIndex6
           }}
         />
       </div>
