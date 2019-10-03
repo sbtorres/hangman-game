@@ -15,6 +15,7 @@ class App extends Component {
     this.state = {
       visibleLetters: [],
       incorrectGuesses: [],
+      secretWord: '',
       lastGuess: 'null',
       snackbarIsOpen: false,
       isWinner: false,
@@ -58,6 +59,7 @@ class App extends Component {
           if (incorrectGuesses.length === 5) {
             this.setState({
               incorrectGuesses: data.incorrectGuesses,
+              secretWord: data.secretWord,
               showEndOfGameModal: true
             });
           } else {
@@ -95,6 +97,7 @@ class App extends Component {
     const {
       visibleLetters,
       incorrectGuesses,
+      secretWord,
       temp,
       lastGuess,
       snackbarIsOpen,
@@ -129,6 +132,7 @@ class App extends Component {
           showEndOfGameModal={showEndOfGameModal}
           handleGameRestart={this.handleGameRestart}
           isWinner={isWinner}
+          secretWord={secretWord}
         />
         <GuessFeedbackSnackbar
           lastGuess={lastGuess}

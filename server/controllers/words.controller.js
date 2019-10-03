@@ -39,9 +39,19 @@ const checkGuess = (req, res) => {
     incorrectGuesses.push(guessedLetter.toUpperCase());
   }
 
-  res
-    .status(200)
-    .send({ charactersArray, incorrectGuesses, correctGuess, hasWon });
+  if (incorrectGuesses.length === 6) {
+    res.status(200).send({
+      charactersArray,
+      incorrectGuesses,
+      correctGuess,
+      hasWon,
+      secretWord
+    });
+  } else {
+    res
+      .status(200)
+      .send({ charactersArray, incorrectGuesses, correctGuess, hasWon });
+  }
 };
 
 module.exports = { getInitialString, checkGuess };

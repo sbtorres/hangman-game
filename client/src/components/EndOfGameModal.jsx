@@ -23,7 +23,8 @@ const useStyles = makeStyles(theme => ({
 const EndOfGameModal = ({
   showEndOfGameModal,
   handleGameRestart,
-  isWinner
+  isWinner,
+  secretWord
 }) => {
   const classes = useStyles();
 
@@ -40,9 +41,9 @@ const EndOfGameModal = ({
       onClose={handleClose}
     >
       <div className={classes.paper}>
-        <h2 id="simple-modal-title">Game Over!</h2>
+        <h2 id="simple-modal-title">{isWinner ? 'You win!' : 'You lost!'}</h2>
         <p id="simple-modal-description">
-          {isWinner ? 'You win!' : 'You lost!'}
+          {`The secret word was ${secretWord}`}
         </p>
         <Button variant="contained" onClick={handleClose}>
           Start a New Game!
@@ -55,7 +56,8 @@ const EndOfGameModal = ({
 EndOfGameModal.propTypes = {
   showEndOfGameModal: PropTypes.bool.isRequired,
   handleGameRestart: PropTypes.func.isRequired,
-  isWinner: PropTypes.bool.isRequired
+  isWinner: PropTypes.bool.isRequired,
+  secretWord: PropTypes.string.isRequired
 };
 
 export default EndOfGameModal;
