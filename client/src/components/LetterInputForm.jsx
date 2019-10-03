@@ -2,19 +2,35 @@ import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Grid, TextField, Button } from '@material-ui/core';
 
-const LetterInputForm = ({ handleUserGuess }) => {
+const LetterInputForm = ({
+  handleUserGuess,
+  incorrectGuesses,
+  visibleLetters
+}) => {
   const [letterInput, setLetterInput] = useState('');
+  const [isInvalidInput, setIsInvalidInput] = useState(false);
   const inputEl = useRef(null);
 
   const handleChange = e => {
-    setLetterInput(e.target.value.toLowerCase());
+    const letter = e.target.value.toLowerCase();
+    if (
+      incorrectGuesses.includes(letter.toUpperCase()) ||
+      visibleLetters.includes(letter)
+    ) {
+      setIsInvalidInput(true);
+    } else {
+      setIsInvalidInput(false);
+      setLetterInput(letter);
+    }
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    handleUserGuess(letterInput);
-    setLetterInput('');
-    inputEl.current.focus();
+    if (!isInvalidInput) {
+      handleUserGuess(letterInput);
+      setLetterInput('');
+      inputEl.current.focus();
+    }
   };
 
   return (
@@ -31,6 +47,10 @@ const LetterInputForm = ({ handleUserGuess }) => {
           variant="outlined"
           margin="dense"
           autoFocus
+          error={isInvalidInput}
+          helperText={
+            isInvalidInput ? 'You have already guessed that letter!' : ' '
+          }
         />
         <Button
           variant="contained"
@@ -46,7 +66,9 @@ const LetterInputForm = ({ handleUserGuess }) => {
 };
 
 LetterInputForm.propTypes = {
-  handleUserGuess: PropTypes.func.isRequired
+  handleUserGuess: PropTypes.func.isRequired,
+  incorrectGuesses: PropTypes.arrayOf(PropTypes.string).isRequired,
+  visibleLetters: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default LetterInputForm;
