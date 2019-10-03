@@ -15,7 +15,6 @@ class App extends Component {
     this.state = {
       visibleLetters: [],
       incorrectGuesses: [],
-      temp: '',
       lastGuess: 'null',
       snackbarIsOpen: false,
       isWinner: false,
@@ -25,11 +24,10 @@ class App extends Component {
 
   componentDidMount() {
     axios
-      .get('http://localhost:3000/getInitialString')
+      .get('http://localhost:3000/words/getInitialString')
       .then(({ data }) => {
         this.setState({
-          visibleLetters: data.charactersArray,
-          temp: data.data
+          visibleLetters: data.charactersArray
         });
       })
       .catch(err => {
@@ -39,7 +37,7 @@ class App extends Component {
 
   handleUserGuess = guessedLetter => {
     axios
-      .get(`http://localhost:3000/checkGuess/${guessedLetter}`)
+      .get(`http://localhost:3000/words/checkGuess/${guessedLetter}`)
       .then(({ data }) => {
         if (data.correctGuess) {
           if (data.hasWon) {
