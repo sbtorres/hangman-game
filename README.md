@@ -7,11 +7,11 @@ This is an interactive hangman game built using React. See below for more inform
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 1. Fork the repository.
-2. Clone the repository down to your local machine using the `git clone` command.
+2. Clone the repository down to your local machine using the `git clone` command from inside the terminal.
 3. Install project dependencies by running `npm install` in the terminal from the root folder of the repository.
 4. Build the project using the shell command `npm run build:prod`.
 5. Start the server using the shell command `npm run start`.
-6. Navigate to [http://localhost:3000](http://localhost:3000) to play the game!
+6. Navigate to [http://localhost:3000](http://localhost:3000) in your favorite browser to play the game!
 
 ## Game Rules
 
