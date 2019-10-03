@@ -118,7 +118,10 @@ class App extends Component {
           <SecretWord visibleLetters={visibleLetters} />
         </Grid>
         <div>
-          <LetterInputForm handleUserGuess={this.handleUserGuess} />
+          <LetterInputForm
+            handleUserGuess={this.handleUserGuess}
+            incorrectGuesses={incorrectGuesses}
+          />
         </div>
         <div style={{ padding: 10 }}>
           <PreviousGuessesView incorrectGuesses={incorrectGuesses} />
