@@ -11,7 +11,7 @@ let incorrectGuesses = [];
 app.use(express.static('client/public'));
 app.use(morgan('tiny'));
 
-app.get('/getInitialString', (req, res) => {
+app.get('/words/getInitialString', (req, res) => {
   const randomInt = Math.floor(Math.random() * 162414);
   axios
     .get(`http://app.linkedin-reach.io/words?start=${randomInt}&count=1`)
@@ -27,7 +27,7 @@ app.get('/getInitialString', (req, res) => {
     });
 });
 
-app.get('/checkGuess/:guessedLetter', (req, res) => {
+app.get('/words/checkGuess/:guessedLetter', (req, res) => {
   const { guessedLetter } = req.params;
   let correctGuess = false;
   let hasWon = true;
