@@ -13,7 +13,7 @@ const getInitialString = (req, res) => {
       incorrectGuesses = [];
       secretWord = data;
       charactersArray.fill('_');
-      res.status(200).send({ charactersArray, data });
+      res.status(200).send({ charactersArray });
     })
     .catch(err => {
       res.status(500).send({ Error: err });
