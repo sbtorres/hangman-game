@@ -114,7 +114,7 @@ class App extends Component {
           alignItems="center"
           alignContent="center"
         >
-          <LinkedInImage />
+          <LinkedInImage incorrectGuesses={incorrectGuesses} />
           <SecretWord visibleLetters={visibleLetters} />
         </Grid>
         <div>

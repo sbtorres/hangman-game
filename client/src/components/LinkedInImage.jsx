@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 
-const LinkedInImage = () => {
+const LinkedInImage = ({ incorrectGuesses }) => {
   return (
     <Grid
       container
@@ -80,6 +81,10 @@ const LinkedInImage = () => {
       </div>
     </Grid>
   );
+};
+
+LinkedInImage.propTypes = {
+  incorrectGuesses: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default LinkedInImage;
