@@ -1,7 +1,7 @@
 const axios = require('axios');
 
-let secretWord = '';
-let charactersArray = [];
+let secretWord = 'test';
+let charactersArray = ['_', '_', '_', '_'];
 let incorrectGuesses = [];
 
 const getInitialString = (req, res) => {
