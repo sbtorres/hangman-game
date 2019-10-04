@@ -6,7 +6,11 @@ import { Grid, AppBar, Typography } from '@material-ui/core';
 const useScoreboardStyles = makeStyles({
   appbar: {
     marginBottom: '10px',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    width: '700px'
+  },
+  scoreboardText: {
+    marginLeft: '20px'
   },
   scoreContainer: {
     justifyContent: 'flex-end'
@@ -23,7 +27,9 @@ const Scoreboard = ({ playerWins, computerWins }) => {
   const classes = useScoreboardStyles();
   return (
     <AppBar position="static" className={classes.appbar}>
-      <Typography variant="h5">Scoreboard</Typography>
+      <Typography variant="h5" className={classes.scoreboardText}>
+        Scoreboard
+      </Typography>
       <Grid container className={classes.scoreContainer}>
         <Typography variant="h6" className={classes.playerWins}>
           Player Wins: {playerWins}
