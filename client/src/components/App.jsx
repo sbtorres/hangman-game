@@ -7,6 +7,7 @@ import GuessFeedbackSnackbar from './GuessFeedbackSnackbar';
 import EndOfGameModal from './EndOfGameModal';
 import PreviousGuessesView from './PreviousGuessesView';
 import LinkedInImage from './LinkedInImage';
+import Scoreboard from './Scoreboard';
 
 class App extends Component {
   constructor(props) {
@@ -110,6 +111,7 @@ class App extends Component {
     return (
       <div>
         <div>{temp}</div>
+        <Scoreboard />
         <Grid
           container
           direction="column"
