@@ -1,11 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, Typography } from '@material-ui/core';
+import { Grid, AppBar, Typography } from '@material-ui/core';
 
 const useScoreboardStyles = makeStyles({
   appbar: {
-    marginBottom: '10px'
+    marginBottom: '10px',
+    flexDirection: 'row'
+  },
+  scoreContainer: {
+    justifyContent: 'flex-end'
+  },
+  playerWins: {
+    marginRight: '60px'
+  },
+  computerWins: {
+    marginRight: '60px'
   }
 });
 
@@ -14,14 +24,14 @@ const Scoreboard = ({ playerWins, computerWins }) => {
   return (
     <AppBar position="static" className={classes.appbar}>
       <Typography variant="h5">Scoreboard</Typography>
-      <Typography variant="h6">
-        Player Wins:
-        {playerWins}
-      </Typography>
-      <Typography variant="h6">
-        Computer Wins:
-        {computerWins}
-      </Typography>
+      <Grid container className={classes.scoreContainer}>
+        <Typography variant="h6" className={classes.playerWins}>
+          Player Wins: {playerWins}
+        </Typography>
+        <Typography variant="h6" className={classes.computerWins}>
+          Computer Wins: {computerWins}
+        </Typography>
+      </Grid>
     </AppBar>
   );
 };
