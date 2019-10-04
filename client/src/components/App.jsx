@@ -101,7 +101,6 @@ class App extends Component {
       visibleLetters,
       incorrectGuesses,
       secretWord,
-      temp,
       lastGuess,
       snackbarIsOpen,
       isWinner,
@@ -110,7 +109,6 @@ class App extends Component {
 
     return (
       <div>
-        <div>{temp}</div>
         <Scoreboard />
         <Grid
           container
