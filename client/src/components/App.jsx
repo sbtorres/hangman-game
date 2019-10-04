@@ -20,7 +20,9 @@ class App extends Component {
       lastGuess: 'null',
       snackbarIsOpen: false,
       isWinner: false,
-      showEndOfGameModal: false
+      showEndOfGameModal: false,
+      playersWins: 0,
+      computerWins: 0
     };
   }
 
@@ -43,11 +45,13 @@ class App extends Component {
       .then(({ data }) => {
         if (data.correctGuess) {
           if (data.hasWon) {
+            const { playerWins } = this.state;
             this.setState({
               visibleLetters: data.charactersArray,
               secretWord: data.secretWord,
               showEndOfGameModal: true,
-              isWinner: data.hasWon
+              isWinner: data.hasWon,
+              playerWins: playerWins + 1
             });
           } else {
             this.setState({
@@ -59,10 +63,12 @@ class App extends Component {
         } else {
           const { incorrectGuesses } = this.state;
           if (incorrectGuesses.length === 5) {
+            const { computerWins } = this.state;
             this.setState({
               incorrectGuesses: data.incorrectGuesses,
               secretWord: data.secretWord,
-              showEndOfGameModal: true
+              showEndOfGameModal: true,
+              computerWins: computerWins + 1
             });
           } else {
             this.setState({
@@ -104,12 +110,14 @@ class App extends Component {
       lastGuess,
       snackbarIsOpen,
       isWinner,
-      showEndOfGameModal
+      showEndOfGameModal,
+      playerWins,
+      computerWins
     } = this.state;
 
     return (
       <div>
-        <Scoreboard />
+        <Scoreboard playerWins={playersWins} computerWins={computerWins} />
         <Grid
           container
           direction="column"
