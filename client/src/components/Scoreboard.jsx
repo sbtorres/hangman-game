@@ -13,7 +13,15 @@ const Scoreboard = ({ playerWins, computerWins }) => {
   const classes = useScoreboardStyles();
   return (
     <AppBar position="static" className={classes.appbar}>
-      <Typography variant="h6">Scoreboard</Typography>
+      <Typography variant="h5">Scoreboard</Typography>
+      <Typography variant="h6">
+        Player Wins:
+        {playerWins}
+      </Typography>
+      <Typography variant="h6">
+        Computer Wins:
+        {computerWins}
+      </Typography>
     </AppBar>
   );
 };

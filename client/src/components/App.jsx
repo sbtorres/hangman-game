@@ -21,7 +21,7 @@ class App extends Component {
       snackbarIsOpen: false,
       isWinner: false,
       showEndOfGameModal: false,
-      playersWins: 0,
+      playerWins: 0,
       computerWins: 0
     };
   }
@@ -117,7 +117,7 @@ class App extends Component {
 
     return (
       <div>
-        <Scoreboard playerWins={playersWins} computerWins={computerWins} />
+        <Scoreboard playerWins={playerWins} computerWins={computerWins} />
         <Grid
           container
           direction="column"
